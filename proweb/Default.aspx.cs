@@ -13,15 +13,5 @@ namespace proweb
         {
 
         }
-
-        protected void crear_btn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Leer_btn_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
