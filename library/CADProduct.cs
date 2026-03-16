@@ -8,5 +8,14 @@ namespace library
 {
     public class CADProduct
     {
+        private string _constring;
+        
+        public CADProduct() { 
+        
+        }
+
+        public CADProduct(ENProduct en) { 
+        
+        }
     }
 }

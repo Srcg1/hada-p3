@@ -56,7 +56,7 @@
     </div>
     
     <div class="button-row">
-        <asp:Button ID="btnCreate" runat="server" Text="Create" />
+        <asp:Button ID="btnCreate" runat="server" Text="Create" OnClick="btnCreate_Click" />
         <asp:Button ID="btnUpdate" runat="server" Text="Update" />
         <asp:Button ID="btnDelete" runat="server" Text="Delete" />
         <asp:Button ID="btnRead" runat="server" Text="Read" />
