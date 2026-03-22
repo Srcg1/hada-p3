@@ -43,7 +43,6 @@ namespace library
             }
             catch (SqlException ex)
             {
-                // Mensaje exacto requerido por el enunciado
                 Console.WriteLine("Product operation has failed. Error: {0}", ex.Message);
                 success = false;
             }
@@ -58,13 +57,12 @@ namespace library
                 using (SqlConnection c = new SqlConnection(constring))
                 {
                     c.Open();
-                    // Leemos buscando por el Code
                     string sql = "SELECT * FROM Products WHERE code = @code";
                     SqlCommand com = new SqlCommand(sql, c);
                     com.Parameters.AddWithValue("@code", en.Code);
 
                     SqlDataReader dr = com.ExecuteReader();
-                    if (dr.Read()) // Si encuentra el producto
+                    if (dr.Read())
                     {
                         en.Name = dr["name"].ToString();
                         en.Amount = int.Parse(dr["amount"].ToString());
@@ -84,7 +82,7 @@ namespace library
             return success;
         }
 
-        // TODO: Implementar update(), delete(), readFirst(), readNext(), readPrev()
+        // Implementar update(), delete(), readFirst(), readNext(), readPrev()
         // siguiendo esta misma estructura de try-catch y SqlConnection.
 
         public bool update(ENProduct en) { throw new NotImplementedException(); }
