@@ -90,7 +90,6 @@ namespace proweb
 
                     creationDateTextBox.Text = en.CreationDate.ToString("dd/MM/yyyy HH:mm:ss");
 
-                    [cite_start]
                     statusLabel.ForeColor = System.Drawing.Color.Green;
                     statusLabel.Text = "¡Producto leído correctamente!";
                 }
@@ -107,7 +106,6 @@ namespace proweb
             }
             catch (Exception ex)
             {
-                [cite_start]
                 statusLabel.ForeColor = System.Drawing.Color.Red;
                 statusLabel.Text = "Ha ocurrido un error al leer el producto: " + ex.Message;
             }
