@@ -139,6 +139,37 @@ namespace proweb
             }
             catch (Exception ex) { statusLabel.Text = "Error: " + ex.Message; }
         }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ENProduct en = new ENProduct();
+                // Recogemos todos los datos del formulario
+                en.Code = codeTextBox.Text;
+                en.Name = nameTextBox.Text;
+                en.Amount = int.Parse(amountTextBox.Text);
+                en.Price = float.Parse(priceTextBox.Text);
+                en.Category = int.Parse(categoryDropDown.SelectedValue);
+                en.CreationDate = DateTime.Parse(creationDateTextBox.Text);
+
+                if (en.update())
+                {
+                    statusLabel.ForeColor = System.Drawing.Color.Green;
+                    statusLabel.Text = "¡Producto actualizado con éxito!";
+                }
+                else
+                {
+                    statusLabel.ForeColor = System.Drawing.Color.Red;
+                    statusLabel.Text = "Error: No se pudo actualizar. Comprueba que el Code existe.";
+                }
+            }
+            catch (Exception ex)
+            {
+                statusLabel.ForeColor = System.Drawing.Color.Red;
+                statusLabel.Text = "Error de formato o conexión: " + ex.Message;
+            }
+        }
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             try
