@@ -219,6 +219,39 @@ namespace library
             }
             return success;
         }
-        public bool readPrev(ENProduct en) { throw new NotImplementedException(); }
+        public bool readPrev(ENProduct en)
+        {
+            bool success = false;
+            try
+            {
+                using (SqlConnection c = new SqlConnection(constring))
+                {
+                    c.Open();
+                    // Seleccionamos el primer producto cuyo código sea menor al actual (ordenando al revés)
+                    string sql = "SELECT TOP 1 * FROM Products WHERE code < @code ORDER BY code DESC";
+                    SqlCommand com = new SqlCommand(sql, c);
+                    com.Parameters.AddWithValue("@code", en.Code);
+                    SqlDataReader dr = com.ExecuteReader();
+
+                    if (dr.Read())
+                    {
+                        en.Code = dr["code"].ToString();
+                        en.Name = dr["name"].ToString();
+                        en.Amount = int.Parse(dr["amount"].ToString());
+                        en.Price = float.Parse(dr["price"].ToString());
+                        en.Category = int.Parse(dr["category"].ToString());
+                        en.CreationDate = DateTime.Parse(dr["creationDate"].ToString());
+                        success = true;
+                    }
+                    dr.Close();
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Product operation has failed. Error: {0}", ex.Message);
+                success = false;
+            }
+            return success;
+        }
     }
 }
