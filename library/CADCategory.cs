@@ -11,7 +11,7 @@ namespace library
 
         public CADCategory()
         {
-            constring = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ToString();
+            constring = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
         }
 
         // Lee una categoría específica por su ID

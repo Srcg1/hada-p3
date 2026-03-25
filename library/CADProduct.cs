@@ -16,7 +16,7 @@ namespace library
         {
             // Carga la cadena de conexión desde el Web.config del proyecto proWeb
             // El nombre "DatabaseConnectionString" tiene que coincidir con el de Web.config
-            constring = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ToString();
+            constring = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
         }
 
         public bool create(ENProduct en)
