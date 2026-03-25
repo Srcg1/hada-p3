@@ -112,5 +112,88 @@ namespace proweb
                 statusLabel.Text = "Ha ocurrido un error al leer el producto: " + ex.Message;
             }
         }
+
+        protected void btnFirst_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ENProduct en = new ENProduct();
+                if (en.readFirst())
+                {
+                    // Si encuentra el primero, rellenamos el formulario
+                    codeTextBox.Text = en.Code;
+                    nameTextBox.Text = en.Name;
+                    amountTextBox.Text = en.Amount.ToString();
+                    priceTextBox.Text = en.Price.ToString();
+                    categoryDropDown.SelectedValue = en.Category.ToString();
+                    creationDateTextBox.Text = en.CreationDate.ToString("dd/MM/yyyy HH:mm:ss");
+
+                    statusLabel.ForeColor = System.Drawing.Color.Green;
+                    statusLabel.Text = "Primer producto leído.";
+                }
+                else
+                {
+                    statusLabel.ForeColor = System.Drawing.Color.Red;
+                    statusLabel.Text = "La base de datos de productos está vacía.";
+                }
+            }
+            catch (Exception ex) { statusLabel.Text = "Error: " + ex.Message; }
+        }
+
+        protected void btnNext_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ENProduct en = new ENProduct();
+                en.Code = codeTextBox.Text; // Le pasamos el código actual para que busque el siguiente
+
+                if (en.readNext())
+                {
+                    codeTextBox.Text = en.Code;
+                    nameTextBox.Text = en.Name;
+                    amountTextBox.Text = en.Amount.ToString();
+                    priceTextBox.Text = en.Price.ToString();
+                    categoryDropDown.SelectedValue = en.Category.ToString();
+                    creationDateTextBox.Text = en.CreationDate.ToString("dd/MM/yyyy HH:mm:ss");
+
+                    statusLabel.ForeColor = System.Drawing.Color.Green;
+                    statusLabel.Text = "Siguiente producto leído.";
+                }
+                else
+                {
+                    statusLabel.ForeColor = System.Drawing.Color.Red;
+                    statusLabel.Text = "No hay más productos en adelante.";
+                }
+            }
+            catch (Exception ex) { statusLabel.Text = "Error: " + ex.Message; }
+        }
+
+        protected void btnPrev_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ENProduct en = new ENProduct();
+                en.Code = codeTextBox.Text; // Le pasamos el código actual para que busque el anterior
+
+                if (en.readPrev())
+                {
+                    codeTextBox.Text = en.Code;
+                    nameTextBox.Text = en.Name;
+                    amountTextBox.Text = en.Amount.ToString();
+                    priceTextBox.Text = en.Price.ToString();
+                    categoryDropDown.SelectedValue = en.Category.ToString();
+                    creationDateTextBox.Text = en.CreationDate.ToString("dd/MM/yyyy HH:mm:ss");
+
+                    statusLabel.ForeColor = System.Drawing.Color.Green;
+                    statusLabel.Text = "Producto anterior leído.";
+                }
+                else
+                {
+                    statusLabel.ForeColor = System.Drawing.Color.Red;
+                    statusLabel.Text = "No hay productos anteriores.";
+                }
+            }
+            catch (Exception ex) { statusLabel.Text = "Error: " + ex.Message; }
+        }
     }
 }
