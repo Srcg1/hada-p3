@@ -139,6 +139,36 @@ namespace proweb
             }
             catch (Exception ex) { statusLabel.Text = "Error: " + ex.Message; }
         }
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ENProduct en = new ENProduct();
+                en.Code = codeTextBox.Text; // Solo necesitamos el código para borrar
+
+                if (en.delete())
+                {
+                    statusLabel.ForeColor = System.Drawing.Color.Green;
+                    statusLabel.Text = "¡Producto borrado con éxito!";
+
+                    // Vaciamos los campos de texto
+                    nameTextBox.Text = "";
+                    amountTextBox.Text = "";
+                    priceTextBox.Text = "";
+                    creationDateTextBox.Text = "";
+                }
+                else
+                {
+                    statusLabel.ForeColor = System.Drawing.Color.Red;
+                    statusLabel.Text = "Error: No se pudo borrar. Comprueba que el Code existe.";
+                }
+            }
+            catch (Exception ex)
+            {
+                statusLabel.ForeColor = System.Drawing.Color.Red;
+                statusLabel.Text = "Error: " + ex.Message;
+            }
+        }
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
