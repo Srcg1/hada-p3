@@ -1,4 +1,5 @@
-﻿using System;
+﻿using library;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,14 @@ namespace proweb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack) // Solo se carga la primera vez que se abre la página
+            {
+                ENCategory categoria = new ENCategory();
+                categoryDropDown.DataSource = categoria.readAll();
+                categoryDropDown.DataTextField = "Name"; // Lo que ve el usuario
+                categoryDropDown.DataValueField = "Id";  // El valor interno que se guarda
+                categoryDropDown.DataBind();
+            }
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
