@@ -89,8 +89,69 @@ namespace library
         // Implementar update(), delete(), readFirst(), readNext(), readPrev()
         // siguiendo esta misma estructura de try-catch y SqlConnection.
 
-        public bool update(ENProduct en) { throw new NotImplementedException(); }
-        public bool delete(ENProduct en) { throw new NotImplementedException(); }
+        public bool update(ENProduct en)
+        {
+            bool success = false;
+            try
+            {
+                using (SqlConnection c = new SqlConnection(constring))
+                {
+                    c.Open();
+                    // Consulta SQL para actualizar los campos del producto que coincida con el código
+                    string sql = "UPDATE Products SET name=@name, amount=@amount, price=@price, category=@category, creationDate=@creationDate WHERE code=@code";
+                    SqlCommand com = new SqlCommand(sql, c);
+
+                    // Añadimos los parámetros igual que en el create
+                    com.Parameters.AddWithValue("@name", en.Name);
+                    com.Parameters.AddWithValue("@code", en.Code);
+                    com.Parameters.AddWithValue("@amount", en.Amount);
+                    com.Parameters.AddWithValue("@price", en.Price);
+                    com.Parameters.AddWithValue("@category", en.Category);
+                    com.Parameters.AddWithValue("@creationDate", en.CreationDate);
+
+                    // ExecuteNonQuery devuelve el número de filas afectadas. Si es mayor que 0, se actualizó correctamente.
+                    if (com.ExecuteNonQuery() > 0)
+                    {
+                        success = true;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Product operation has failed. Error: {0}", ex.Message);
+                success = false;
+            }
+            return success;
+        }
+
+        public bool delete(ENProduct en)
+        {
+            bool success = false;
+            try
+            {
+                using (SqlConnection c = new SqlConnection(constring))
+                {
+                    c.Open();
+                    // Consulta SQL para borrar el producto que coincida con el código
+                    string sql = "DELETE FROM Products WHERE code=@code";
+                    SqlCommand com = new SqlCommand(sql, c);
+
+                    com.Parameters.AddWithValue("@code", en.Code);
+
+                    // Si devuelve más de 0 filas afectadas, se borró correctamente
+                    if (com.ExecuteNonQuery() > 0)
+                    {
+                        success = true;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Product operation has failed. Error: {0}", ex.Message);
+                success = false;
+            }
+            return success;
+        }
         public bool readFirst(ENProduct en) { throw new NotImplementedException(); }
         public bool readNext(ENProduct en) { throw new NotImplementedException(); }
         public bool readPrev(ENProduct en) { throw new NotImplementedException(); }
