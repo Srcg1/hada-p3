@@ -57,12 +57,12 @@
     
     <div class="button-row">
         <asp:Button ID="btnCreate" runat="server" Text="Create" OnClick="btnCreate_Click" />
-        <asp:Button ID="btnUpdate" runat="server" Text="Update" />
-        <asp:Button ID="btnDelete" runat="server" Text="Delete" />
+        <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click"/>
+        <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click"/>
         <asp:Button ID="btnRead" runat="server" Text="Read" OnClick="btnRead_Click"/>
-        <asp:Button ID="btnReadFirst" runat="server" Text="Read First" />
-        <asp:Button ID="btnReadPrev" runat="server" Text="Read Prev" />
-        <asp:Button ID="btnReadNext" runat="server" Text="Read Next" />
+        <asp:Button ID="btnReadFirst" runat="server" Text="Read First" OnClick="btnFirst_Click"/>
+        <asp:Button ID="btnReadPrev" runat="server" Text="Read Prev" OnClick="btnNext_Click"/>
+        <asp:Button ID="btnReadNext" runat="server" Text="Read Next" OnClick="btnPrev_Click"/>
     </div>
 
     <br />
