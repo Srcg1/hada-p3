@@ -21,9 +21,10 @@ namespace library
         public bool create(ENProduct en)
         {
             bool success = false;
+            //SqlConnection c = new SqlConnection(constring)
             try
             {
-                using (SqlConnection c = new SqlConnection(constring))
+                using (SqlConnection c = new SqlConnection(constring)) //esta linea se quita por lo comentado
                 {
                     c.Open();
                     // Usamos parámetros (@) para evitar inyecciones SQL
@@ -46,6 +47,9 @@ namespace library
                 Console.WriteLine("Product operation has failed. Error: {0}", ex.Message);
                 success = false;
             }
+            //finally{
+                //c.Close()
+            //}
             return success;
         }
 
