@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Globalization;
 
 namespace library
 {
@@ -71,7 +72,7 @@ namespace library
                     {
                         en.Name = dr["name"].ToString();
                         en.Amount = int.Parse(dr["amount"].ToString());
-                        en.Price = float.Parse(dr["price"].ToString());
+                        en.Price = float.Parse(dr["price"].ToString().Replace(',', '.'), CultureInfo.InvariantCulture);
                         en.Category = int.Parse(dr["category"].ToString());
                         en.CreationDate = DateTime.Parse(dr["creationDate"].ToString());
                         success = true;
@@ -171,7 +172,7 @@ namespace library
                         en.Code = dr["code"].ToString();
                         en.Name = dr["name"].ToString();
                         en.Amount = int.Parse(dr["amount"].ToString());
-                        en.Price = float.Parse(dr["price"].ToString());
+                        en.Price = float.Parse(dr["price"].ToString().Replace(',', '.'), CultureInfo.InvariantCulture);
                         en.Category = int.Parse(dr["category"].ToString());
                         en.CreationDate = DateTime.Parse(dr["creationDate"].ToString());
                         success = true;
@@ -205,7 +206,7 @@ namespace library
                         en.Code = dr["code"].ToString();
                         en.Name = dr["name"].ToString();
                         en.Amount = int.Parse(dr["amount"].ToString());
-                        en.Price = float.Parse(dr["price"].ToString());
+                        en.Price = float.Parse(dr["price"].ToString().Replace(',', '.'), CultureInfo.InvariantCulture);
                         en.Category = int.Parse(dr["category"].ToString());
                         en.CreationDate = DateTime.Parse(dr["creationDate"].ToString());
                         success = true;
@@ -239,7 +240,7 @@ namespace library
                         en.Code = dr["code"].ToString();
                         en.Name = dr["name"].ToString();
                         en.Amount = int.Parse(dr["amount"].ToString());
-                        en.Price = float.Parse(dr["price"].ToString());
+                        en.Price = float.Parse(dr["price"].ToString().Replace(',', '.'), CultureInfo.InvariantCulture);
                         en.Category = int.Parse(dr["category"].ToString());
                         en.CreationDate = DateTime.Parse(dr["creationDate"].ToString());
                         success = true;

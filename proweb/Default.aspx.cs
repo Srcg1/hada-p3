@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Globalization;
 
 namespace proweb
 {
@@ -46,8 +47,8 @@ namespace proweb
                     return;
                 }
                 en.Amount = cantidad;
-                
-                float precio = float.Parse(priceTextBox.Text);
+
+                float precio = float.Parse(priceTextBox.Text.Replace(',', '.'), CultureInfo.InvariantCulture);
                 if (precio < 0)
                 {
                     statusLabel.ForeColor = System.Drawing.Color.Red;
@@ -101,7 +102,7 @@ namespace proweb
                 {
                     nameTextBox.Text = en.Name;
                     amountTextBox.Text = en.Amount.ToString();
-                    priceTextBox.Text = en.Price.ToString();
+                    priceTextBox.Text = en.Price.ToString(CultureInfo.InvariantCulture);
 
                     categoryDropDown.SelectedValue = en.Category.ToString();
 
@@ -172,7 +173,7 @@ namespace proweb
                 }
                 en.Amount = cantidad;
 
-                float precio = float.Parse(priceTextBox.Text);
+                float precio = float.Parse(priceTextBox.Text.Replace(',', '.'), CultureInfo.InvariantCulture);
                 if (precio < 0)
                 {
                     statusLabel.ForeColor = System.Drawing.Color.Red;
