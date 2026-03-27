@@ -21,6 +21,10 @@
 <body>
     <form id="form1" runat="server">
         <div class="header">
+            <div class="student-info">
+                Saul Carrasco Guerrero - 48763328Q<br />
+                Abdelatif Boussaid - Y8485131P
+            </div>
             <h1>HADA P3 - CURSO 2025/26</h1>
         </div>
         
