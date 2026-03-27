@@ -37,6 +37,7 @@ namespace proweb
                 }
 
                 en.Name = nameTextBox.Text;
+                
                 int cantidad = int.Parse(amountTextBox.Text);
                 if (cantidad < 0)
                 {
@@ -45,6 +46,7 @@ namespace proweb
                     return;
                 }
                 en.Amount = cantidad;
+                
                 float precio = float.Parse(priceTextBox.Text);
                 if (precio < 0)
                 {
@@ -53,6 +55,7 @@ namespace proweb
                     return;
                 }
                 en.Price = precio;
+                
                 en.Category = int.Parse(categoryDropDown.SelectedValue);
                 en.CreationDate = DateTime.Parse(creationDateTextBox.Text);
 
@@ -160,8 +163,24 @@ namespace proweb
                 // Recogemos todos los datos del formulario
                 en.Code = codeTextBox.Text;
                 en.Name = nameTextBox.Text;
-                en.Amount = int.Parse(amountTextBox.Text);
-                en.Price = float.Parse(priceTextBox.Text);
+                int cantidad = int.Parse(amountTextBox.Text);
+                if (cantidad < 0)
+                {
+                    statusLabel.ForeColor = System.Drawing.Color.Red;
+                    statusLabel.Text = "Error: No se puede introducir cantidades negativas.";
+                    return;
+                }
+                en.Amount = cantidad;
+
+                float precio = float.Parse(priceTextBox.Text);
+                if (precio < 0)
+                {
+                    statusLabel.ForeColor = System.Drawing.Color.Red;
+                    statusLabel.Text = "Error: No se puede introducir precios negativos.";
+                    return;
+                }
+                en.Price = precio;
+                
                 en.Category = int.Parse(categoryDropDown.SelectedValue);
                 en.CreationDate = DateTime.Parse(creationDateTextBox.Text);
 
