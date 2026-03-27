@@ -88,7 +88,7 @@ namespace proweb
 
                     categoryDropDown.SelectedValue = en.Category.ToString();
 
-                    creationDateTextBox.Text = en.CreationDate.ToString("dd/MM/yyyy HH:mm:ss");
+                    creationDateTextBox.Text = en.CreationDate.ToString("dd/MM/yyyy");
 
                     statusLabel.ForeColor = System.Drawing.Color.Green;
                     statusLabel.Text = "¡Producto leído correctamente!";
@@ -124,7 +124,7 @@ namespace proweb
                     amountTextBox.Text = en.Amount.ToString();
                     priceTextBox.Text = en.Price.ToString();
                     categoryDropDown.SelectedValue = en.Category.ToString();
-                    creationDateTextBox.Text = en.CreationDate.ToString("dd/MM/yyyy HH:mm:ss");
+                    creationDateTextBox.Text = en.CreationDate.ToString("dd/MM/yyyy");
 
                     statusLabel.ForeColor = System.Drawing.Color.Green;
                     statusLabel.Text = "Primer producto leído.";
