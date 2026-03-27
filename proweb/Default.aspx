@@ -61,8 +61,8 @@
         <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click"/>
         <asp:Button ID="btnRead" runat="server" Text="Read" OnClick="btnRead_Click"/>
         <asp:Button ID="btnReadFirst" runat="server" Text="Read First" OnClick="btnFirst_Click"/>
-        <asp:Button ID="btnReadPrev" runat="server" Text="Read Prev" OnClick="btnNext_Click"/>
-        <asp:Button ID="btnReadNext" runat="server" Text="Read Next" OnClick="btnPrev_Click"/>
+        <asp:Button ID="btnReadPrev" runat="server" Text="Read Prev" OnClick="btnPrev_Click"/>
+        <asp:Button ID="btnReadNext" runat="server" Text="Read Next" OnClick="btnNext_Click"/>
     </div>
 
     <br />
