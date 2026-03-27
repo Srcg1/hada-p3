@@ -186,7 +186,7 @@ namespace library
             }
             return success;
         }
-        public bool readNext(ENProduct en)
+        public bool readPrev(ENProduct en)
         {
             bool success = false;
             try
@@ -220,7 +220,7 @@ namespace library
             }
             return success;
         }
-        public bool readPrev(ENProduct en)
+        public bool readNext(ENProduct en)
         {
             bool success = false;
             try
